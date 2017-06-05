@@ -29,8 +29,8 @@ script:
 
   # Starts the instance and creates a database.
   - docker start $(docker ps -a -q)
-  - docker exec $(docker ps -a -q) su -c ". ~db2inst1/sqllib/db2profile ; db2start" db2inst1
-  - docker exec $(docker ps -a -q) su -c ". ~db2inst1/sqllib/db2profile ; db2 create db test" db2inst1
-  - docker exec $(docker ps -a -q) su -c ". ~db2inst1/sqllib/db2profile ; db2 connect to test" db2inst1
+  - docker exec $(docker ps -a -q) -it -u db2inst1 ". ~db2inst1/sqllib/db2profile ; db2start" 
+  - docker exec $(docker ps -a -q) -it -u db2inst1 ". ~db2inst1/sqllib/db2profile ; db2 create db test"
+  - docker exec $(docker ps -a -q) -it -u db2inst1 ". ~db2inst1/sqllib/db2profile ; db2 connect to test" 
 
 
